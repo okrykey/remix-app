@@ -1,4 +1,4 @@
-import type { LinksFunction } from "@remix-run/node";
+import type { LinksFunction, LoaderFunction } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -10,7 +10,7 @@ import {
 import styles from "./tailwind.css";
 import { cssBundleHref } from "@remix-run/css-bundle";
 import { rootAuthLoader } from "@clerk/remix/ssr.server";
-import { ClerkApp } from "@clerk/remix";
+import { ClerkApp, ClerkErrorBoundary } from "@clerk/remix";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: styles },
@@ -21,7 +21,7 @@ export const loader: LoaderFunction = (args) => rootAuthLoader(args);
 
 export const ErrorBoundary = ClerkErrorBoundary();
 
-export default function App() {
+function App() {
   return (
     <html lang="ja">
       <head>
