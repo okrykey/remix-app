@@ -9,11 +9,17 @@ import {
 } from "@remix-run/react";
 import styles from "./tailwind.css";
 import { cssBundleHref } from "@remix-run/css-bundle";
+import { rootAuthLoader } from "@clerk/remix/ssr.server";
+import { ClerkApp } from "@clerk/remix";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: styles },
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
 ];
+
+export const loader: LoaderFunction = (args) => rootAuthLoader(args);
+
+export const ErrorBoundary = ClerkErrorBoundary();
 
 export default function App() {
   return (
@@ -33,3 +39,5 @@ export default function App() {
     </html>
   );
 }
+
+export default ClerkApp(App);
