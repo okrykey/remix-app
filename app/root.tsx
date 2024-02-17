@@ -11,6 +11,7 @@ import styles from "./tailwind.css";
 import { cssBundleHref } from "@remix-run/css-bundle";
 import { rootAuthLoader } from "@clerk/remix/ssr.server";
 import { ClerkApp, ClerkErrorBoundary } from "@clerk/remix";
+import { Toaster } from "./components/ui/toaster";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: styles },
@@ -35,6 +36,7 @@ function App() {
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
+        <Toaster />
       </body>
     </html>
   );
