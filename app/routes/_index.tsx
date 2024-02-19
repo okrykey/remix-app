@@ -5,7 +5,6 @@ import {
   type LoaderFunction,
   type MetaFunction,
 } from "@remix-run/node";
-import { Button } from "~/components/ui/button";
 
 export const meta: MetaFunction = () => {
   return [
@@ -30,8 +29,6 @@ export default function Index() {
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
       <h1>Welcome to Code Memo App</h1>
       <UserButton afterSignOutUrl="/" />
-
-      <Button>test</Button>
     </div>
   );
 }
